@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@100..600&family=Sacramento&display=block">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #0B0A09; }
+  .lienzo {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background:
+      radial-gradient(55% 75% at 80% 72%, rgba(201, 161, 91, .17), transparent 62%),
+      radial-gradient(40% 55% at 8% 0%, rgba(201, 161, 91, .08), transparent 70%),
+      #0B0A09;
+    font-family: "Jost", "Century Gothic", sans-serif;
+  }
+  .diagonal {
+    position: absolute; top: 0; bottom: 0; left: 610px; width: 170px;
+    background: linear-gradient(to bottom right, transparent calc(50% - .7px), rgba(201, 161, 91, .55) 50%, transparent calc(50% + .7px));
+    -webkit-mask-image: linear-gradient(to bottom, #000 10%, transparent 90%);
+  }
+  .texto { position: absolute; left: 76px; top: 64px; }
+  .logo { display: block; width: 214px; height: auto; color: #F2EDE4; }
+  .eyebrow { margin-top: 46px; font: 300 22px/1 "Jost"; letter-spacing: .44em; text-transform: uppercase; color: #F2EDE4; }
+  .n360 {
+    margin: 12px 0 0 -10px; font: 100 212px/.9 "Jost"; color: #FFF9EF; letter-spacing: -.01em;
+    text-shadow: 0 0 2px rgba(255, 248, 235, .9), 0 0 24px rgba(255, 236, 200, .45), 0 0 72px rgba(201, 161, 91, .35);
+  }
+  .grado { font-size: .36em; position: relative; top: -1.05em; margin-left: .03em; }
+  .script { margin-top: 4px; font: 400 58px/1.1 "Sacramento", cursive; color: #F2EDE4; }
+  .datos { position: absolute; left: 76px; bottom: 54px; display: flex; gap: 14px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px 12px 15px;
+    border: 1px solid rgba(201, 161, 91, .42); border-radius: 999px;
+    font: 420 15px/1 "Jost"; letter-spacing: .18em; text-transform: uppercase; color: #E6CF9F;
+  }
+  .chip svg { width: 19px; height: 19px; color: #C9A15B; }
+  canvas { position: absolute; right: 0; top: 0; width: 700px; height: 630px; }
+</style>
+</head>
+<body>
+<div class="lienzo">
+  <div class="diagonal"></div>
+  <canvas id="giro" width="1400" height="1260"></canvas>
+  <div class="texto">
+    <svg class="logo" viewBox="__VIEWBOX__"><path id="logo-trazo" fill="currentColor" fill-rule="evenodd" d="__LOGO_D__"/></svg>
+    <div class="eyebrow">La experiencia</div>
+    <div class="n360">360<span class="grado">°</span></div>
+    <div class="script">y está lista para tu evento.</div>
+  </div>
+  <div class="datos">
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 21.5s-6.8-6.4-6.8-11.4a6.8 6.8 0 0 1 13.6 0c0 5-6.8 11.4-6.8 11.4z"/><circle cx="12" cy="10" r="2.4"/></svg>Servicio exclusivo en Ciudad Juárez</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.6 20.4l1.25-3.7A8.6 8.6 0 1 1 8.1 19.5z"/><path d="M9.3 7.9c-.45 3.1 3.3 7.1 6.8 6.8l.9-1.4-2-1.1-.9.7a4.7 4.7 0 0 1-2.4-2.4l.7-.9-1.1-2z" fill="currentColor" stroke-width="1"/></svg>81 1185 0227</span>
+  </div>
+</div>
+<script>
+(async function () {
+  await document.fonts.ready;
+  const canvas = document.getElementById("giro");
+  const ctx = canvas.getContext("2d");
+  const W = 700, H = 630, TAU = Math.PI * 2;
+  ctx.scale(2, 2);
+  const logo = new Path2D(document.getElementById("logo-trazo").getAttribute("d"));
+  const [, , logoW, logoH] = "__VIEWBOX__".split(" ").map(Number);
+
+  let semilla = 7;
+  const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+
+  const a = -Math.PI / 2 + 0.55, s = Math.sin(a), c = Math.cos(a);
+  const cx = W - 290, rx = H * 0.30, ry = rx * 0.24, top = H * 0.70, th = rx * 0.11;
+
+  for (let i = 0; i < 46; i++) {
+    const x = azar() * W, y = H * (0.03 + azar() * 0.5), r = 0.5 + azar() * 1.9, al = 0.15 + azar() * 0.35;
+    ctx.beginPath();
+    if (azar() < 0.2) {
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r * 7);
+      g.addColorStop(0, `rgba(230,207,159,${al * 0.35})`); g.addColorStop(1, "rgba(230,207,159,0)");
+      ctx.fillStyle = g; ctx.arc(x, y, r * 7, 0, TAU);
+    } else {
+      ctx.fillStyle = `rgba(236,216,172,${al})`; ctx.arc(x, y, r, 0, TAU);
+    }
+    ctx.fill();
+  }
+
+  ctx.save();
+  ctx.translate(cx, top + th + ry * 0.35); ctx.scale(1, 0.2);
+  let g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx * 1.9);
+  g.addColorStop(0, "rgba(255,240,212,0.34)"); g.addColorStop(0.35, "rgba(230,196,140,0.14)"); g.addColorStop(1, "rgba(230,196,140,0)");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, rx * 1.9, 0, TAU); ctx.fill();
+  ctx.restore();
+
+  function poste() {
+    const R = rx * 0.30, bx = cx + rx * 1.2 * c, by = top + th + ry * 1.2 * s;
+    const alto = H * 0.42, pTop = by - alto, pw = Math.max(3, rx * 0.028);
+    ctx.lineCap = "round"; ctx.strokeStyle = "#161412"; ctx.lineWidth = pw;
+    ctx.beginPath(); ctx.moveTo(cx + rx * 0.98 * c, top + th + ry * 0.98 * s); ctx.lineTo(bx, by); ctx.stroke();
+    const gp = ctx.createLinearGradient(bx - pw, 0, bx + pw, 0);
+    gp.addColorStop(0, "#050505"); gp.addColorStop(0.5, "#3B3731"); gp.addColorStop(1, "#080808");
+    ctx.fillStyle = gp; ctx.fillRect(bx - pw / 2, pTop, pw, alto);
+    ctx.fillStyle = "#1B1916"; ctx.fillRect(bx - pw * 1.3, by - alto * 0.38, pw * 2.6, pw * 3.2);
+    const k = Math.abs(s), rw = R * Math.max(k, 0.08), cy = pTop - R * 0.9, deFrente = Math.max(0, -s);
+    const tw = R * 0.24 * Math.max(k, 0.3), tl = R * 0.5;
+    ctx.strokeStyle = "#1A1815"; ctx.lineWidth = pw * 0.8;
+    ctx.beginPath(); ctx.moveTo(bx, pTop); ctx.lineTo(bx, cy + tl / 2); ctx.stroke();
+    ctx.save();
+    ctx.lineWidth = Math.max(3, R * 0.13); ctx.shadowColor = "rgba(255,236,200,1)";
+    ctx.shadowBlur = R * (0.25 + 0.45 * deFrente); ctx.strokeStyle = `rgba(255,248,236,${0.35 + 0.65 * deFrente})`;
+    ctx.beginPath(); ctx.ellipse(bx, cy, rw, R, 0, 0, TAU); ctx.stroke();
+    ctx.globalAlpha = 0.1 + 0.5 * deFrente; ctx.shadowBlur = R * 1.1; ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = "#0B0B0B"; ctx.strokeStyle = "rgba(242,237,228,0.22)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.roundRect(bx - tw / 2, cy - tl / 2, tw, tl, Math.min(tw, tl) * 0.18); ctx.fill(); ctx.stroke();
+  }
+
+  function disco() {
+    ctx.beginPath();
+    ctx.moveTo(cx + rx, top); ctx.lineTo(cx + rx, top + th);
+    ctx.ellipse(cx, top + th, rx, ry, 0, 0, Math.PI); ctx.lineTo(cx - rx, top);
+    ctx.ellipse(cx, top, rx, ry, 0, Math.PI, 0, true); ctx.closePath();
+    const gs = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+    gs.addColorStop(0, "#070706"); gs.addColorStop(0.5, "#1B1916"); gs.addColorStop(1, "#070706");
+    ctx.fillStyle = gs; ctx.fill();
+    ctx.save();
+    ctx.lineCap = "round"; ctx.strokeStyle = "#FFF5E2"; ctx.lineWidth = Math.max(1.5, th * 0.2);
+    ctx.shadowColor = "rgba(255,232,190,1)"; ctx.shadowBlur = rx * 0.08;
+    ctx.beginPath(); ctx.ellipse(cx, top + th * 0.55, rx, ry, 0, 0.04, Math.PI - 0.04); ctx.stroke();
+    ctx.globalAlpha = 0.55; ctx.shadowBlur = rx * 0.22; ctx.stroke();
+    ctx.restore();
+    const gt = ctx.createLinearGradient(0, top - ry, 0, top + ry);
+    gt.addColorStop(0, "#27231D"); gt.addColorStop(1, "#0C0B0A");
+    ctx.beginPath(); ctx.ellipse(cx, top, rx, ry, 0, 0, TAU); ctx.fillStyle = gt; ctx.fill();
+    ctx.strokeStyle = "rgba(242,237,228,0.14)"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.lineWidth = 1.1; ctx.strokeStyle = "rgba(242,237,228,0.32)";
+    ctx.beginPath(); ctx.ellipse(cx, top, rx * 0.62, ry * 0.62, 0, 0, TAU); ctx.stroke();
+    ctx.lineWidth = 1.8; ctx.strokeStyle = "rgba(201,161,91,0.95)";
+    ctx.beginPath(); ctx.ellipse(cx, top, rx * 0.62, ry * 0.62, 0, -0.15, 1.35); ctx.stroke();
+    ctx.save();
+    ctx.translate(cx, top); ctx.scale(1, 0.4);
+    ctx.fillStyle = "rgba(242,237,228,0.9)"; ctx.textAlign = "center";
+    ctx.font = `200 ${Math.round(rx * 0.26)}px Jost, sans-serif`;
+    ctx.fillText("360°", 0, rx * 0.06);
+    const lw = rx * 0.5, esc = lw / logoW;
+    ctx.translate(-lw / 2, rx * 0.12); ctx.scale(esc, esc);
+    ctx.fill(logo, "evenodd");
+    ctx.restore();
+  }
+
+  if (s < 0) { poste(); disco(); } else { disco(); poste(); }
+  document.body.dataset.listo = "1";
+})();
+</script>
+</body>
+</html>
