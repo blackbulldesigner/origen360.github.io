@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origen 360°</title>
+<meta name="description" content="Plataforma 360° para bodas, XV años y fiestas. Videos espectaculares y recuerdos inolvidables. Promoción de inauguración: los primeros 5 eventos reciben un descuento exclusivo.">
+<meta property="og:title" content="Origen 360° · La experiencia 360° ya está aquí">
+<meta property="og:description" content="Videos espectaculares, recuerdos inolvidables. Agenda tu fecha por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@100..600&family=Marcellus&family=Sacramento&display=swap">
+</head>
+<body>
+<style>
+  :root {
+    --noche: #0B0A09;
+    --humo: #15130F;
+    --oro: #C9A15B;
+    --oro-claro: #E6CF9F;
+    --marfil: #F2EDE4;
+    --texto: #B9B0A2;
+    --ceniza: #8E8578;
+    --linea: rgba(201, 161, 91, .26);
+    --linea-suave: rgba(242, 237, 228, .10);
+    --f-base: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+    --f-titulo: "Marcellus", "Optima", "Palatino Linotype", Georgia, serif;
+    --f-script: "Sacramento", "Brush Script MT", cursive;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--noche);
+    color: var(--texto);
+    font-family: var(--f-base);
+    font-weight: 360;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  [id] { scroll-margin-top: 88px; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--oro-claro); outline-offset: 3px; border-radius: 4px; }
+
+  .envoltura {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* ---------- Cabecera ---------- */
+  .cabecera {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(11, 10, 9, .8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--linea-suave);
+  }
+  .cabecera .envoltura {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem; height: 72px;
+  }
+  .logo { display: block; width: 128px; height: auto; color: var(--marfil); }
+  .menu { display: flex; gap: clamp(1.25rem, 2.4vw, 2.25rem); list-style: none; margin: 0; padding: 0; }
+  .menu a {
+    text-decoration: none; color: var(--texto);
+    font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 420;
+    transition: color .2s;
+  }
+  .menu a:hover { color: var(--oro-claro); }
+
+  /* ---------- Botones ---------- */
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: .7rem;
+    padding: 1rem 1.55rem; border-radius: 12px; border: 1px solid transparent;
+    font: 520 .76rem/1 var(--f-base); letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    transition: transform .2s, box-shadow .2s, border-color .2s, color .2s;
+  }
+  .boton svg { width: 18px; height: 18px; flex: none; }
+  .boton--oro {
+    background: linear-gradient(135deg, #E6C88D 0%, #C9A15B 48%, #A8823F 100%);
+    color: #17120A;
+  }
+  .boton--oro:hover { transform: translateY(-1px); box-shadow: 0 12px 32px -12px rgba(201, 161, 91, .7); }
+  .boton--linea { border-color: var(--linea); color: var(--marfil); }
+  .boton--linea:hover { border-color: var(--oro); color: var(--oro-claro); }
+  .boton--chico { padding: .72rem 1.1rem; font-size: .68rem; }
+
+  /* ---------- Portada ---------- */
+  .portada {
+    position: relative; overflow: hidden;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
+  }
+  .portada::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 46%; width: 22%;
+    background: linear-gradient(to bottom right, transparent calc(50% - .7px), rgba(201, 161, 91, .55) 50%, transparent calc(50% + .7px));
+    -webkit-mask-image: linear-gradient(to bottom, #000 10%, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000 10%, transparent 85%);
+    pointer-events: none;
+  }
+  .portada .envoltura {
+    position: relative;
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    align-items: center; gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .portada h1 { margin: 0; font-size: inherit; font-weight: inherit; }
+  .p-eyebrow {
+    display: block; color: var(--marfil);
+    font: 300 clamp(.95rem, 1.6vw, 1.3rem)/1 var(--f-base);
+    letter-spacing: .44em; text-transform: uppercase;
+  }
+  .p-360 {
+    display: block; color: #FFF9EF;
+    font: 100 clamp(6.5rem, 16vw, 12.5rem)/.92 var(--f-base);
+    letter-spacing: -.01em; margin: .1em 0 .12em -.06em;
+    text-shadow: 0 0 2px rgba(255, 248, 235, .9), 0 0 24px rgba(255, 236, 200, .45), 0 0 72px rgba(201, 161, 91, .35);
+  }
+  .grado { font-size: .36em; position: relative; top: -1.05em; margin-left: .03em; }
+  .p-aqui {
+    display: block; color: var(--oro);
+    font: 420 clamp(1.25rem, 2.5vw, 1.9rem)/1.1 var(--f-base);
+    letter-spacing: .4em; text-transform: uppercase;
+  }
+  .p-script {
+    display: block; color: var(--marfil);
+    font: 400 clamp(2.6rem, 5.2vw, 4rem)/1.1 var(--f-script);
+    margin-top: .1em;
+  }
+  .lead { max-width: 33rem; margin: 1.5rem 0 0; font-size: 1.08rem; }
+  .acciones { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
+  .etiquetas {
+    display: flex; flex-wrap: wrap; gap: .4rem 1.5rem;
+    list-style: none; margin: 2.25rem 0 0; padding: 1.2rem 0 0;
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(90deg, var(--oro), transparent 85%) 1;
+    font-size: .72rem; letter-spacing: .26em; text-transform: uppercase; color: var(--ceniza);
+  }
+
+  .escenario { position: relative; width: 100%; max-width: 560px; aspect-ratio: 5 / 6; justify-self: end; }
+  .escenario canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    cursor: grab; touch-action: pan-y;
+  }
+  .escenario canvas:active { cursor: grabbing; }
+  .lectura {
+    position: absolute; left: 0; right: 0; bottom: .25rem;
+    display: flex; justify-content: space-between; gap: 1rem; pointer-events: none;
+    font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ceniza);
+  }
+  .lectura b {
+    display: inline-block; min-width: 4.5ch; text-align: right;
+    font-weight: 400; letter-spacing: .06em; color: var(--oro-claro);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Secciones ---------- */
+  .bloque { padding-block: clamp(4.5rem, 9vw, 7.5rem); }
+  .bloque.pegado { padding-top: 0; }
+  .bloque.con-linea { border-top: 1px solid var(--linea-suave); }
+  .encabezado { max-width: 42rem; margin-bottom: clamp(2.5rem, 5vw, 3.75rem); }
+  .antetitulo {
+    display: block; margin-bottom: 1rem; color: var(--oro);
+    font: 520 .72rem/1 var(--f-base); letter-spacing: .32em; text-transform: uppercase;
+  }
+  .titulo {
+    margin: 0; color: var(--marfil); text-wrap: balance;
+    font: 400 clamp(2rem, 4.2vw, 3.1rem)/1.14 var(--f-titulo);
+  }
+  .encabezado p { margin: 1rem 0 0; max-width: 36rem; }
+
+  /* ---------- Promoción ---------- */
+  .promo {
+    display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: center; gap: clamp(2rem, 5vw, 4.5rem);
+    padding: clamp(1.75rem, 5vw, 3.5rem);
+    border: 1px solid var(--linea); border-radius: 20px;
+    background:
+      radial-gradient(120% 140% at 0% 0%, rgba(201, 161, 91, .13), transparent 55%),
+      linear-gradient(160deg, #18150F, #0E0C0A);
+  }
+  .sello {
+    display: inline-block; padding: .5rem .85rem; border-radius: 4px;
+    background: linear-gradient(135deg, #DDBE82, #B28A48); color: #17120A;
+    font: 600 .68rem/1 var(--f-base); letter-spacing: .22em; text-transform: uppercase;
+  }
+  .promo h2 {
+    margin: 1.25rem 0 0; color: var(--marfil); text-wrap: balance;
+    font: 400 clamp(1.9rem, 3.8vw, 2.9rem)/1.16 var(--f-titulo);
+  }
+  .promo h2 em { font-style: normal; color: var(--oro-claro); }
+  .promo p { margin: 1rem 0 0; max-width: 32rem; }
+  .promo-lugares { display: flex; flex-direction: column; align-items: flex-start; }
+  .lugares { display: flex; gap: .7rem; list-style: none; margin: 0; padding: 0; }
+  .lugar {
+    width: clamp(46px, 5.2vw, 60px); aspect-ratio: 1; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--linea); color: var(--oro-claro);
+    font: 300 1.15rem/1 var(--f-base); font-variant-numeric: tabular-nums;
+  }
+  .lugar.tomado { background: var(--oro); border-color: var(--oro); color: #17120A; }
+  .lugares-nota {
+    margin: 1rem 0 1.6rem;
+    font-size: .76rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ceniza);
+  }
+  .lugares-nota b { font-weight: 500; color: var(--oro-claro); font-variant-numeric: tabular-nums; }
+
+  /* ---------- Eventos ---------- */
+  .eventos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+  .evento { padding: .25rem clamp(1rem, 2.4vw, 2rem); text-align: center; border-left: 1px solid var(--linea-suave); }
+  .evento:first-child { border-left: 0; }
+  .evento svg { display: block; width: 64px; height: 64px; margin: 0 auto 1.25rem; color: var(--oro); }
+  .evento h3 {
+    margin: 0 0 .6rem; color: var(--marfil);
+    font: 420 .92rem/1.2 var(--f-base); letter-spacing: .24em; text-transform: uppercase;
+  }
+  .evento p { margin: 0; font-size: .96rem; }
+
+  /* ---------- Experiencia ---------- */
+  .frase {
+    margin: 0 0 clamp(3rem, 6vw, 4.5rem); color: var(--marfil);
+    font: 300 clamp(1.3rem, 3.9vw, 2.9rem)/1.3 var(--f-base);
+    letter-spacing: .2em; text-transform: uppercase;
+  }
+  .frase span { display: block; color: var(--oro); }
+  .beneficios {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none; margin: 0; padding: 2.5rem 0 0; border-top: 1px solid var(--linea-suave);
+  }
+  .beneficio {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.1rem; align-items: start;
+    padding: 0 clamp(1rem, 2.5vw, 2.25rem); border-left: 1px solid var(--linea-suave);
+  }
+  .beneficio:first-child { border-left: 0; padding-left: 0; }
+  .beneficio svg { width: 52px; height: 52px; color: var(--oro); }
+  .beneficio h3 {
+    margin: .2rem 0 .5rem; color: var(--marfil);
+    font: 420 .88rem/1.3 var(--f-base); letter-spacing: .2em; text-transform: uppercase;
+  }
+  .beneficio p { margin: 0; font-size: .96rem; }
+
+  /* ---------- Cómo funciona ---------- */
+  .pasos {
+    position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem); list-style: none; margin: 0; padding: 0;
+  }
+  .pasos::before {
+    content: ""; position: absolute; left: 28px; right: 0; top: 28px; height: 1px;
+    background: linear-gradient(90deg, var(--linea), transparent);
+  }
+  .dial { position: relative; display: block; width: 56px; height: 56px; border-radius: 50%; background: var(--noche); }
+  .dial .base { stroke: rgba(242, 237, 228, .14); }
+  .dial .arco { stroke: var(--oro); }
+  .grados {
+    display: block; margin: 1.2rem 0 .5rem; color: var(--oro-claro);
+    font: 200 2.4rem/1 var(--f-base); font-variant-numeric: tabular-nums;
+  }
+  .paso h3 { margin: 0 0 .5rem; color: var(--marfil); font: 400 1.3rem/1.25 var(--f-titulo); }
+  .paso p { margin: 0; font-size: .96rem; }
+
+  /* ---------- Preguntas ---------- */
+  .preguntas {
+    display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 5rem); align-items: start;
+  }
+  .preguntas .encabezado { margin-bottom: 0; }
+  .faq details { border-bottom: 1px solid var(--linea-suave); }
+  .faq details:first-child { border-top: 1px solid var(--linea-suave); }
+  .faq summary {
+    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+    padding: 1.35rem 0; cursor: pointer; list-style: none;
+    color: var(--marfil); font: 400 1.2rem/1.35 var(--f-titulo);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: ""; flex: none; width: 13px; height: 13px;
+    background:
+      linear-gradient(var(--oro), var(--oro)) center / 100% 1px no-repeat,
+      linear-gradient(var(--oro), var(--oro)) center / 1px 100% no-repeat;
+    transition: transform .25s;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq summary:hover { color: var(--oro-claro); }
+  .faq details p { margin: 0 0 1.5rem; max-width: 38rem; }
+
+  /* ---------- Reserva ---------- */
+  .reserva {
+    border-top: 1px solid var(--linea-suave);
+    background: radial-gradient(55% 75% at 80% 55%, rgba(201, 161, 91, .10), transparent 70%);
+  }
+  .reserva-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 6vw, 5rem); align-items: center;
+  }
+  .reserva .script { display: block; margin-bottom: .2rem; color: var(--oro-claro); font: 400 clamp(2.8rem, 6vw, 4.2rem)/1 var(--f-script); }
+  .reserva-texto p { margin: 1.1rem 0 0; max-width: 30rem; }
+  .directo { margin-top: 1.5rem; font-size: .95rem; }
+  .directo a { color: var(--oro-claro); text-underline-offset: 4px; }
+  .formulario {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+    padding: clamp(1.4rem, 3vw, 2.25rem);
+    border: 1px solid var(--linea); border-radius: 18px; background: rgba(21, 19, 15, .75);
+  }
+  .campo { display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
+  .campo--ancho { grid-column: 1 / -1; }
+  .campo label { font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ceniza); }
+  .campo input, .campo select {
+    width: 100%; min-width: 0; padding: .85rem 1rem;
+    font: inherit; font-size: 1rem; color: var(--marfil);
+    background: #0E0D0B; border: 1px solid rgba(242, 237, 228, .14); border-radius: 10px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .campo input::placeholder { color: #6E675D; }
+  .campo input:focus, .campo select:focus { outline: none; border-color: var(--oro); box-shadow: 0 0 0 3px rgba(201, 161, 91, .2); }
+  .formulario .boton { grid-column: 1 / -1; margin-top: .4rem; padding-block: 1.1rem; }
+  .formulario small { grid-column: 1 / -1; text-align: center; font-size: .82rem; color: var(--ceniza); }
+
+  /* ---------- Pie ---------- */
+  .pie { border-top: 1px solid var(--linea-suave); padding-block: 2.5rem 6rem; }
+  .pie .envoltura { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; }
+  .pie p { margin: 0; font-size: .8rem; letter-spacing: .12em; color: var(--ceniza); }
+  .pie a { color: var(--oro-claro); text-decoration: none; }
+  .pie a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  .flotante {
+    position: fixed; right: clamp(1rem, 3vw, 1.75rem); bottom: clamp(1rem, 3vw, 1.75rem); z-index: 30;
+    display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, #E6C88D, #B28A48); color: #17120A;
+    box-shadow: 0 12px 30px -8px rgba(201, 161, 91, .55);
+    transition: transform .2s;
+  }
+  .flotante:hover { transform: scale(1.06); }
+  .flotante svg { width: 27px; height: 27px; }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 960px) {
+    .menu { display: none; }
+    .beneficios { grid-template-columns: 1fr; gap: 2rem; }
+    .beneficio, .beneficio:first-child { border-left: 0; padding: 0; }
+    .pasos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
+    .pasos::before { display: none; }
+  }
+  @media (max-width: 860px) {
+    .portada::before { display: none; }
+    .portada .envoltura { grid-template-columns: 1fr; }
+    .escenario { justify-self: center; aspect-ratio: 1 / 1; max-width: 460px; }
+    .promo, .preguntas, .reserva-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .eventos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.75rem; }
+    .evento:nth-child(odd) { border-left: 0; }
+  }
+  @media (max-width: 520px) {
+    .cabecera .boton--chico { display: none; }
+    .pasos { grid-template-columns: 1fr; }
+    .formulario { grid-template-columns: 1fr; }
+    .lugares { gap: .5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+    <path d="M3.6 20.4l1.25-3.7A8.6 8.6 0 1 1 8.1 19.5z"/>
+    <path d="M9.3 7.9c-.45 3.1 3.3 7.1 6.8 6.8l.9-1.4-2-1.1-.9.7a4.7 4.7 0 0 1-2.4-2.4l.7-.9-1.1-2z" fill="currentColor" stroke-width="1"/>
+  </symbol>
+</svg>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a href="#inicio" aria-label="Origen, ir al inicio">
+      <svg class="logo" viewBox="0 0 220 46" role="img" aria-label="Origen">
+        <text x="110" y="28" text-anchor="middle" font-family="Marcellus, Optima, Georgia, serif" font-size="30" textLength="190" lengthAdjust="spacing" fill="currentColor">ORIGEN</text>
+        <rect x="14" y="37.4" width="192" height=".9" fill="currentColor"/>
+        <path d="M58 37.9C98 38.2 124 35.4 166 30.2 132 36.6 102 39.6 58 37.9Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#promocion">Promoción</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+    <a class="boton boton--oro boton--chico" href="#reserva" data-wa>Agenda tu fecha</a>
+  </div>
+</header>
+
+<main>
+  <section class="portada" id="inicio">
+    <div class="envoltura">
+      <div>
+        <h1>
+          <span class="p-eyebrow">La experiencia</span>
+          <span class="p-360">360<span class="grado">°</span></span>
+          <span class="p-aqui">Ya está aquí</span>
+          <span class="p-script">y está lista para tu evento.</span>
+        </h1>
+        <p class="lead">Una plataforma iluminada y una cámara que da la vuelta completa alrededor de tus invitados. Ellos suben, posan y bailan; tú te quedas con videos que se ven de película.</p>
+        <div class="acciones">
+          <a class="boton boton--oro" href="#reserva" data-wa><svg aria-hidden="true"><use href="#i-wa"/></svg>Agenda tu fecha</a>
+          <a class="boton boton--linea" href="#como-funciona">Cómo funciona</a>
+        </div>
+        <ul class="etiquetas">
+          <li>Bodas</li><li>XV años</li><li>Fiestas</li><li>Y más</li>
+        </ul>
+      </div>
+      <div class="escenario">
+        <canvas id="giro" role="img" aria-label="Plataforma 360° Origen iluminada, con el aro de luz girando a su alrededor"></canvas>
+        <div class="lectura" aria-hidden="true">
+          <span>Arrastra para girar</span>
+          <span>Giro <b id="grados-lectura">0°</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque pegado" id="promocion" aria-labelledby="promo-titulo">
+    <div class="envoltura">
+      <div class="promo">
+        <div>
+          <span class="sello">Promoción de inauguración</span>
+          <h2 id="promo-titulo">Los primeros <em>5 eventos</em> en agendar reciben un descuento exclusivo.</h2>
+          <p>Estamos estrenando la plataforma y queremos celebrarlo con quienes confíen primero en nosotros. Los lugares se asignan en orden de reservación.</p>
+        </div>
+        <div class="promo-lugares">
+          <ol class="lugares" id="lugares" aria-label="Lugares de la promoción">
+            <li class="lugar">1</li><li class="lugar">2</li><li class="lugar">3</li><li class="lugar">4</li><li class="lugar">5</li>
+          </ol>
+          <p class="lugares-nota" id="lugares-nota">Quedan <b>5</b> de 5 lugares</p>
+          <a class="boton boton--oro" href="#reserva" data-wa="Hola, Origen 360°. Quiero apartar uno de los 5 lugares de la promoción de inauguración.">Apartar mi lugar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque con-linea" id="eventos" aria-labelledby="eventos-titulo">
+    <div class="envoltura">
+      <div class="encabezado">
+        <span class="antetitulo">Para cada celebración</span>
+        <h2 class="titulo" id="eventos-titulo">Del vals al último baile, todos quieren su vuelta.</h2>
+      </div>
+      <ul class="eventos">
+        <li class="evento">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="25" cy="41" r="12"/><circle cx="39" cy="41" r="12"/>
+            <path d="M32 21C26 16.5 25 13.5 26.8 11.3 28.6 9.2 31 10 32 12 33 10 35.4 9.2 37.2 11.3 39 13.5 38 16.5 32 21Z"/>
+          </svg>
+          <h3>Bodas</h3>
+          <p>La entrada, el vals y todos los que vinieron a verte.</p>
+        </li>
+        <li class="evento">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 46 9 21l13 11 10-17 10 17 13-11-4 25Z"/><path d="M14 52h36"/>
+            <circle cx="9" cy="18" r="2"/><circle cx="32" cy="12" r="2"/><circle cx="55" cy="18" r="2"/>
+          </svg>
+          <h3>XV años</h3>
+          <p>Tu noche, con la corte y los chambelanes girando contigo.</p>
+        </li>
+        <li class="evento">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 53 23 26l16 16Z"/><path d="M18.5 38.5 27 47"/>
+            <path d="M29 22c2-6 8-6 8-12"/><path d="M43 30c5-3 10 0 14-4"/><path d="M35 27 47 15"/>
+            <circle cx="51" cy="10" r="1.5"/><circle cx="44" cy="21" r="1.2"/><circle cx="55" cy="37" r="1.5"/><circle cx="27" cy="12" r="1.2"/>
+          </svg>
+          <h3>Fiestas</h3>
+          <p>Cumpleaños, graduaciones y reuniones que merecen video.</p>
+        </li>
+        <li class="evento">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+            <path d="M27 18Q29.9 31.1 43 34 29.9 36.9 27 50 24.1 36.9 11 34 24.1 31.1 27 18Z"/>
+            <path d="M47 8Q48.4 14.6 55 16 48.4 17.4 47 24 45.6 17.4 39 16 45.6 14.6 47 8Z"/>
+            <path d="M49 41Q50.3 46.7 56 48 50.3 49.3 49 55 47.7 49.3 42 48 47.7 46.7 49 41Z"/>
+          </svg>
+          <h3>Y más</h3>
+          <p>Posadas, eventos de empresa, baby showers: si hay celebración, hay giro.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bloque con-linea" id="experiencia" aria-labelledby="experiencia-titulo">
+    <div class="envoltura">
+      <h2 class="frase" id="experiencia-titulo">Videos espectaculares <span>Recuerdos inolvidables</span></h2>
+      <ul class="beneficios">
+        <li class="beneficio">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M50 20A22 22 0 1 0 54 36"/><path d="M51 11v9h-9"/>
+            <text x="32" y="37" text-anchor="middle" font-family="Jost, sans-serif" font-size="12.5" font-weight="400" fill="currentColor" stroke="none">360°</text>
+          </svg>
+          <div>
+            <h3>Videos en 360°</h3>
+            <p>La cámara da la vuelta completa alrededor de tus invitados mientras ellos posan y bailan.</p>
+          </div>
+        </li>
+        <li class="beneficio">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="32" cy="23" r="7"/><path d="M19 51c0-8 6-13 13-13s13 5 13 13"/>
+            <circle cx="14" cy="28" r="5"/><path d="M4 49c0-6 4-10 10-10 2 0 4 .5 5.5 1.5"/>
+            <circle cx="50" cy="28" r="5"/><path d="M60 49c0-6-4-10-10-10-2 0-4 .5-5.5 1.5"/>
+          </svg>
+          <div>
+            <h3>Diversión para tus invitados</h3>
+            <p>Una fila de gente esperando su turno es la mejor señal de que la fiesta va bien.</p>
+          </div>
+        </li>
+        <li class="beneficio">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+            <path d="M27 18Q29.9 31.1 43 34 29.9 36.9 27 50 24.1 36.9 11 34 24.1 31.1 27 18Z"/>
+            <path d="M47 8Q48.4 14.6 55 16 48.4 17.4 47 24 45.6 17.4 39 16 45.6 14.6 47 8Z"/>
+            <path d="M49 41Q50.3 46.7 56 48 50.3 49.3 49 55 47.7 49.3 42 48 47.7 46.7 49 41Z"/>
+          </svg>
+          <div>
+            <h3>Videos de alta calidad</h3>
+            <p>Plataforma iluminada y aro de luz para que cada toma se vea nítida, incluso en plena pista.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bloque con-linea" id="como-funciona" aria-labelledby="pasos-titulo">
+    <div class="envoltura">
+      <div class="encabezado">
+        <span class="antetitulo">Cómo funciona</span>
+        <h2 class="titulo" id="pasos-titulo">Una vuelta completa, en cuatro pasos.</h2>
+      </div>
+      <ol class="pasos">
+        <li class="paso">
+          <svg class="dial" viewBox="0 0 56 56" aria-hidden="true"><circle class="base" cx="28" cy="28" r="22" fill="none" stroke-width="1"/><circle class="arco" cx="28" cy="28" r="22" fill="none" stroke-width="2" stroke-linecap="round" pathLength="360" stroke-dasharray="90 360" transform="rotate(-90 28 28)"/><circle cx="28" cy="28" r="2.5" fill="#C9A15B"/></svg>
+          <span class="grados">90°</span>
+          <h3>Agenda tu fecha</h3>
+          <p>Escríbenos por WhatsApp con la fecha, el lugar y el tipo de evento.</p>
+        </li>
+        <li class="paso">
+          <svg class="dial" viewBox="0 0 56 56" aria-hidden="true"><circle class="base" cx="28" cy="28" r="22" fill="none" stroke-width="1"/><circle class="arco" cx="28" cy="28" r="22" fill="none" stroke-width="2" stroke-linecap="round" pathLength="360" stroke-dasharray="180 360" transform="rotate(-90 28 28)"/><circle cx="28" cy="28" r="2.5" fill="#C9A15B"/></svg>
+          <span class="grados">180°</span>
+          <h3>Montamos todo</h3>
+          <p>Llegamos antes, instalamos la plataforma y la dejamos lista para girar.</p>
+        </li>
+        <li class="paso">
+          <svg class="dial" viewBox="0 0 56 56" aria-hidden="true"><circle class="base" cx="28" cy="28" r="22" fill="none" stroke-width="1"/><circle class="arco" cx="28" cy="28" r="22" fill="none" stroke-width="2" stroke-linecap="round" pathLength="360" stroke-dasharray="270 360" transform="rotate(-90 28 28)"/><circle cx="28" cy="28" r="2.5" fill="#C9A15B"/></svg>
+          <span class="grados">270°</span>
+          <h3>Tus invitados giran</h3>
+          <p>Suben en grupo, posan, bailan y la cámara hace el resto.</p>
+        </li>
+        <li class="paso">
+          <svg class="dial" viewBox="0 0 56 56" aria-hidden="true"><circle class="base" cx="28" cy="28" r="22" fill="none" stroke-width="1"/><circle class="arco" cx="28" cy="28" r="22" fill="none" stroke-width="2" stroke-linecap="round" pathLength="360" stroke-dasharray="360 360" transform="rotate(-90 28 28)"/><circle cx="28" cy="28" r="2.5" fill="#C9A15B"/></svg>
+          <span class="grados">360°</span>
+          <h3>Te quedas con los videos</h3>
+          <p>Recuerdos para compartir esa misma noche y volver a ver en diez años.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="bloque con-linea" id="preguntas" aria-labelledby="faq-titulo">
+    <div class="envoltura preguntas">
+      <div class="encabezado">
+        <span class="antetitulo">Preguntas frecuentes</span>
+        <h2 class="titulo" id="faq-titulo">Lo que nos preguntan antes de apartar.</h2>
+        <p>¿No está tu duda aquí? Escríbenos y te respondemos por WhatsApp.</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>¿Cómo aparto mi fecha?</summary>
+          <p>Mándanos un WhatsApp con la fecha, el lugar y el tipo de evento. Te confirmamos disponibilidad y te explicamos cómo dejarla apartada.</p>
+        </details>
+        <details>
+          <summary>¿Cómo funciona la promoción de inauguración?</summary>
+          <p>Los primeros 5 eventos que agenden reciben un descuento exclusivo. Los lugares se asignan en el orden en que se aparta cada fecha.</p>
+        </details>
+        <details>
+          <summary>¿Qué se necesita en el lugar del evento?</summary>
+          <p>Un espacio despejado para que la cámara gire alrededor de la plataforma y una toma de corriente cerca. Cuéntanos dónde será tu evento y lo revisamos contigo.</p>
+        </details>
+        <details>
+          <summary>¿Para qué tipo de eventos está disponible?</summary>
+          <p>Bodas, XV años, fiestas y prácticamente cualquier celebración: cumpleaños, graduaciones, posadas o eventos de empresa.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque reserva" id="reserva" aria-labelledby="reserva-titulo">
+    <div class="envoltura reserva-grid">
+      <div class="reserva-texto">
+        <span class="script">Agenda tu fecha</span>
+        <h2 class="titulo" id="reserva-titulo">Haz que tu evento sea inolvidable.</h2>
+        <p>Llena estos datos y se abrirá WhatsApp con tu mensaje ya escrito. Solo tienes que enviarlo.</p>
+        <p class="directo">¿Prefieres escribir tú? <a href="#reserva" data-wa>Abre el chat directo</a>.</p>
+      </div>
+      <form class="formulario" id="formulario">
+        <div class="campo campo--ancho">
+          <label for="f-nombre">Tu nombre</label>
+          <input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej. Mariana López" required>
+        </div>
+        <div class="campo">
+          <label for="f-evento">Tipo de evento</label>
+          <select id="f-evento" name="evento" required>
+            <option value="Boda">Boda</option>
+            <option value="XV años">XV años</option>
+            <option value="Fiesta">Fiesta</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="f-fecha">Fecha del evento</label>
+          <input id="f-fecha" name="fecha" type="date" required>
+        </div>
+        <div class="campo campo--ancho">
+          <label for="f-lugar">Ciudad o salón</label>
+          <input id="f-lugar" name="lugar" type="text" placeholder="Ej. Jardín Las Palmas">
+        </div>
+        <button class="boton boton--oro" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+        <small>Primero confirmamos disponibilidad; nada queda apartado hasta que hablemos.</small>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <svg class="logo" viewBox="0 0 220 46" role="img" aria-label="Origen">
+      <text x="110" y="28" text-anchor="middle" font-family="Marcellus, Optima, Georgia, serif" font-size="30" textLength="190" lengthAdjust="spacing" fill="currentColor">ORIGEN</text>
+      <rect x="14" y="37.4" width="192" height=".9" fill="currentColor"/>
+      <path d="M58 37.9C98 38.2 124 35.4 166 30.2 132 36.6 102 39.6 58 37.9Z" fill="currentColor"/>
+    </svg>
+    <p>Plataforma 360° para eventos · <a href="#reserva" data-wa>WhatsApp</a></p>
+    <p>© <span id="anio">2026</span> Origen 360°</p>
+  </div>
+</footer>
+
+<a class="flotante" href="#reserva" data-wa aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+  /* ============ AJUSTES: edita solo esta parte ============ */
+  const CONFIG = {
+    // Tu número con código de país, sin "+", espacios ni guiones. México: 52 + 10 dígitos.
+    whatsapp: "520000000000",
+    lugaresPromo: 5,
+    // Sube este número cada vez que alguien aparte con la promoción.
+    lugaresApartados: 0,
+  };
+  /* ======================================================== */
+
+  const MENSAJE = "Hola, Origen 360°. Quiero información para tener la plataforma 360° en mi evento.";
+  const enlaceWhatsApp = (texto) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+
+  document.querySelectorAll("[data-wa]").forEach((a) => {
+    a.href = enlaceWhatsApp(a.dataset.wa || MENSAJE);
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+
+  (function promo() {
+    const total = CONFIG.lugaresPromo;
+    const tomados = Math.min(total, Math.max(0, CONFIG.lugaresApartados));
+    const libres = total - tomados;
+    const lista = document.getElementById("lugares");
+    lista.innerHTML = "";
+    for (let i = 1; i <= total; i++) {
+      const li = document.createElement("li");
+      const tomado = i <= tomados;
+      li.className = "lugar" + (tomado ? " tomado" : "");
+      li.textContent = i;
+      li.setAttribute("aria-label", `Lugar ${i}: ${tomado ? "apartado" : "disponible"}`);
+      lista.appendChild(li);
+    }
+    document.getElementById("lugares-nota").innerHTML = libres > 0
+      ? `Quedan <b>${libres}</b> de ${total} lugares`
+      : "Promoción agotada · pregunta por fechas";
+  })();
+
+  (function formulario() {
+    const form = document.getElementById("formulario");
+    const fecha = form.querySelector("#f-fecha");
+    const hoy = new Date();
+    fecha.min = new Date(hoy.getTime() - hoy.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const d = new FormData(form);
+      let dia = d.get("fecha");
+      if (dia) {
+        const [y, m, dd] = dia.split("-").map(Number);
+        dia = new Date(y, m - 1, dd).toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      }
+      const lineas = [
+        "Hola, Origen 360°. Quiero agendar la plataforma 360°.",
+        `Nombre: ${d.get("nombre")}`,
+        `Evento: ${d.get("evento")}`,
+        `Fecha: ${dia}`,
+        d.get("lugar") ? `Lugar: ${d.get("lugar")}` : "",
+      ].filter(Boolean);
+      window.open(enlaceWhatsApp(lineas.join("\n")), "_blank", "noopener");
+    });
+  })();
+
+  document.getElementById("anio").textContent = new Date().getFullYear();
+
+  /* ---------- Plataforma giratoria ---------- */
+  (function giro() {
+    const canvas = document.getElementById("giro");
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext("2d");
+    const lectura = document.getElementById("grados-lectura");
+    const reducir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const VUELTA_MS = 9000;
+    const INICIO = -Math.PI / 2 + 0.55;
+    const TAU = Math.PI * 2;
+
+    let W = 0, H = 0, motas = [];
+    let reloj = 0, previo = null, desfase = 0;
+    let corriendo = false, visible = true, arrastrando = false, x0 = 0, ultimoGrado = -1;
+
+    function medir() {
+      const r = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      motas = Array.from({ length: 56 }, () => ({
+        x: Math.random() * W,
+        y: H * (0.03 + Math.random() * 0.5),
+        r: 0.5 + Math.random() * 1.9,
+        f: 0.5 + Math.random() * 1.4,
+        p: Math.random() * TAU,
+        grande: Math.random() < 0.2,
+      }));
+      dibujar();
+    }
+
+    function dibujar() {
+      if (!W || !H) return;
+      const a = INICIO + (reloj / VUELTA_MS) * TAU + desfase;
+      const s = Math.sin(a), c = Math.cos(a);
+      const cx = W / 2, rx = Math.min(W * 0.36, H * 0.30), ry = rx * 0.24, top = H * 0.70, th = rx * 0.11;
+
+      ctx.clearRect(0, 0, W, H);
+
+      let g = ctx.createRadialGradient(cx, top - rx * 0.3, 0, cx, top - rx * 0.3, rx * 2.3);
+      g.addColorStop(0, "rgba(201,161,91,0.13)");
+      g.addColorStop(1, "rgba(201,161,91,0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
+
+      const tm = reducir ? 0 : performance.now() / 1000;
+      for (const m of motas) {
+        const al = 0.15 + 0.35 * (0.5 + 0.5 * Math.sin(tm * m.f + m.p));
+        ctx.beginPath();
+        if (m.grande) {
+          const r = m.r * 7;
+          const gm = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, r);
+          gm.addColorStop(0, `rgba(230,207,159,${al * 0.35})`);
+          gm.addColorStop(1, "rgba(230,207,159,0)");
+          ctx.fillStyle = gm;
+          ctx.arc(m.x, m.y, r, 0, TAU);
+        } else {
+          ctx.fillStyle = `rgba(236,216,172,${al})`;
+          ctx.arc(m.x, m.y, m.r, 0, TAU);
+        }
+        ctx.fill();
+      }
+
+      ctx.save();
+      ctx.translate(cx, top + th + ry * 0.35);
+      ctx.scale(1, 0.2);
+      g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx * 1.9);
+      g.addColorStop(0, "rgba(255,240,212,0.34)");
+      g.addColorStop(0.35, "rgba(230,196,140,0.14)");
+      g.addColorStop(1, "rgba(230,196,140,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(0, 0, rx * 1.9, 0, TAU); ctx.fill();
+      ctx.restore();
+
+      function disco() {
+        ctx.beginPath();
+        ctx.moveTo(cx + rx, top);
+        ctx.lineTo(cx + rx, top + th);
+        ctx.ellipse(cx, top + th, rx, ry, 0, 0, Math.PI);
+        ctx.lineTo(cx - rx, top);
+        ctx.ellipse(cx, top, rx, ry, 0, Math.PI, 0, true);
+        ctx.closePath();
+        const gs = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+        gs.addColorStop(0, "#070706"); gs.addColorStop(0.5, "#1B1916"); gs.addColorStop(1, "#070706");
+        ctx.fillStyle = gs;
+        ctx.fill();
+
+        ctx.save();
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "#FFF5E2";
+        ctx.lineWidth = Math.max(1.5, th * 0.2);
+        ctx.shadowColor = "rgba(255,232,190,1)";
+        ctx.shadowBlur = rx * 0.08;
+        ctx.beginPath();
+        ctx.ellipse(cx, top + th * 0.55, rx, ry, 0, 0.04, Math.PI - 0.04);
+        ctx.stroke();
+        ctx.globalAlpha = 0.55;
+        ctx.shadowBlur = rx * 0.22;
+        ctx.stroke();
+        ctx.restore();
+
+        const gt = ctx.createLinearGradient(0, top - ry, 0, top + ry);
+        gt.addColorStop(0, "#27231D"); gt.addColorStop(1, "#0C0B0A");
+        ctx.beginPath();
+        ctx.ellipse(cx, top, rx, ry, 0, 0, TAU);
+        ctx.fillStyle = gt;
+        ctx.fill();
+        ctx.strokeStyle = "rgba(242,237,228,0.14)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.save();
+        ctx.clip();
+        const lx = cx + rx * 0.55 * c, ly = top + ry * 0.55 * s;
+        const gl = ctx.createRadialGradient(lx, ly, 0, lx, ly, rx);
+        gl.addColorStop(0, "rgba(255,236,200,0.13)");
+        gl.addColorStop(1, "rgba(255,236,200,0)");
+        ctx.fillStyle = gl;
+        ctx.fillRect(cx - rx, top - ry, rx * 2, ry * 2);
+        ctx.restore();
+
+        ctx.lineWidth = 1.1;
+        ctx.strokeStyle = "rgba(242,237,228,0.32)";
+        ctx.beginPath(); ctx.ellipse(cx, top, rx * 0.62, ry * 0.62, 0, 0, TAU); ctx.stroke();
+        ctx.lineWidth = 1.8;
+        ctx.strokeStyle = "rgba(201,161,91,0.95)";
+        ctx.beginPath(); ctx.ellipse(cx, top, rx * 0.62, ry * 0.62, 0, -0.15, 1.35); ctx.stroke();
+
+        ctx.save();
+        ctx.translate(cx, top);
+        ctx.scale(1, 0.4);
+        ctx.fillStyle = "rgba(242,237,228,0.9)";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "alphabetic";
+        ctx.font = `200 ${Math.round(rx * 0.26)}px Jost, sans-serif`;
+        ctx.fillText("360°", 0, rx * 0.06);
+        ctx.font = `${Math.round(rx * 0.085)}px Marcellus, serif`;
+        if ("letterSpacing" in ctx) ctx.letterSpacing = `${(rx * 0.035).toFixed(1)}px`;
+        ctx.fillText("ORIGEN", 0, rx * 0.2);
+        if ("letterSpacing" in ctx) ctx.letterSpacing = "0px";
+        ctx.restore();
+      }
+
+      function poste() {
+        const R = rx * 0.30;
+        const bx = cx + rx * 1.2 * c, by = top + th + ry * 1.2 * s;
+        const alto = H * 0.42, pTop = by - alto;
+        const pw = Math.max(3, rx * 0.028);
+
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "#161412";
+        ctx.lineWidth = pw;
+        ctx.beginPath();
+        ctx.moveTo(cx + rx * 0.98 * c, top + th + ry * 0.98 * s);
+        ctx.lineTo(bx, by);
+        ctx.stroke();
+
+        const gp = ctx.createLinearGradient(bx - pw, 0, bx + pw, 0);
+        gp.addColorStop(0, "#050505"); gp.addColorStop(0.5, "#3B3731"); gp.addColorStop(1, "#080808");
+        ctx.fillStyle = gp;
+        ctx.fillRect(bx - pw / 2, pTop, pw, alto);
+        ctx.fillStyle = "#1B1916";
+        ctx.fillRect(bx - pw * 1.3, by - alto * 0.38, pw * 2.6, pw * 3.2);
+
+        const k = Math.abs(s);
+        const rw = R * Math.max(k, 0.08);
+        const cy = pTop - R * 0.9;
+        const deFrente = Math.max(0, -s);
+        const tw = R * 0.24 * Math.max(k, 0.3), tl = R * 0.5;
+
+        ctx.strokeStyle = "#1A1815";
+        ctx.lineWidth = pw * 0.8;
+        ctx.beginPath(); ctx.moveTo(bx, pTop); ctx.lineTo(bx, cy + tl / 2); ctx.stroke();
+
+        ctx.save();
+        ctx.lineWidth = Math.max(3, R * 0.13);
+        ctx.shadowColor = "rgba(255,236,200,1)";
+        ctx.shadowBlur = R * (0.25 + 0.45 * deFrente);
+        ctx.strokeStyle = `rgba(255,248,236,${0.35 + 0.65 * deFrente})`;
+        ctx.beginPath(); ctx.ellipse(bx, cy, rw, R, 0, 0, TAU); ctx.stroke();
+        ctx.globalAlpha = 0.1 + 0.5 * deFrente;
+        ctx.shadowBlur = R * 1.1;
+        ctx.stroke();
+        ctx.restore();
+
+        if (deFrente < 0.4) {
+          ctx.strokeStyle = `rgba(20,18,16,${((0.4 - deFrente) / 0.4) * 0.85})`;
+          ctx.lineWidth = Math.max(2, R * 0.08);
+          ctx.beginPath(); ctx.ellipse(bx, cy, rw, R, 0, 0, TAU); ctx.stroke();
+        }
+
+        ctx.fillStyle = "#0B0B0B";
+        ctx.strokeStyle = "rgba(242,237,228,0.22)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(bx - tw / 2, cy - tl / 2, tw, tl, Math.min(tw, tl) * 0.18);
+        else ctx.rect(bx - tw / 2, cy - tl / 2, tw, tl);
+        ctx.fill(); ctx.stroke();
+      }
+
+      if (s < 0) { poste(); disco(); } else { disco(); poste(); }
+
+      const grado = Math.round(((((a - INICIO) * 180) / Math.PI) % 360 + 360) % 360);
+      if (grado !== ultimoGrado) { lectura.textContent = grado + "°"; ultimoGrado = grado; }
+    }
+
+    function cuadro(ahora) {
+      if (previo !== null && !arrastrando) reloj += Math.min(ahora - previo, 64);
+      previo = ahora;
+      dibujar();
+      if (visible) requestAnimationFrame(cuadro);
+      else { corriendo = false; previo = null; }
+    }
+    function arrancar() {
+      if (reducir || corriendo) return;
+      corriendo = true;
+      requestAnimationFrame(cuadro);
+    }
+
+    canvas.addEventListener("pointerdown", (e) => { arrastrando = true; x0 = e.clientX; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!arrastrando) return;
+      desfase -= (e.clientX - x0) * 0.012;
+      x0 = e.clientX;
+      if (reducir) dibujar();
+    });
+    const soltar = () => { arrastrando = false; };
+    canvas.addEventListener("pointerup", soltar);
+    canvas.addEventListener("pointercancel", soltar);
+
+    new ResizeObserver(medir).observe(canvas);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entrada]) => { visible = entrada.isIntersecting; if (visible) arrancar(); }).observe(canvas);
+    }
+    if (document.fonts) document.fonts.ready.then(dibujar);
+    arrancar();
+  })();
+</script>
+</body>
+</html>
